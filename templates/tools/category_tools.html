@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% block title %}{{ category_name }} Tools{% endblock %}
+
+{% block content %}
+<h2 class="text-center text-primary-emphasis fw-bold my-4">{{ category_name }} Tools</h2>
+
+<div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+  {% for tool in tools %}
+  <div class="col">
+    <div class="card h-100 shadow-sm">
+      <div class="card-body">
+        <h5 class="card-title">{{ tool.name }}</h5>
+        <p class="card-text">{{ tool.description|truncatechars:100 }}</p>
+        <a href="{% url 'tool_detail' tool.id %}" class="btn btn-outline-primary btn-sm">View Details →</a>
+      </div>
+    </div>
+  </div>
+  {% empty %}
+  <p class="text-muted text-center">No tools available in this category.</p>
+  {% endfor %}
+</div>
+{% endblock %}

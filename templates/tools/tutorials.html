@@ -1,0 +1,23 @@
+
+{% extends 'base.html' %}
+{% block title %}Tutorials{% endblock %}
+{% block content %}
+<h2 class="text-center text-primary my-4">📘 AI Tool Tutorials</h2>
+
+<div class="row row-cols-1 row-cols-md-2 g-4">
+  {% for tutorial in tutorials %}
+  <div class="col">
+    <div class="card shadow-sm h-100">
+      <div class="card-body">
+        <h5 class="card-title">{{ tutorial.title }}</h5>
+        <p class="card-text text-muted small">
+          Tool: <strong>{{ tutorial.tool.name }}</strong><br>
+          Published: {{ tutorial.published_at|date:"M d, Y" }}
+        </p>
+        <a href="{% url 'tutorial_detail' tutorial.pk %}" class="btn btn-outline-primary btn-sm">View Tutorial →</a>
+      </div>
+    </div>
+  </div>
+  {% endfor %}
+</div>
+{% endblock %}

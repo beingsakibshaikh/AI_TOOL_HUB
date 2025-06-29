@@ -1,0 +1,118 @@
+{% extends 'base.html' %}
+{% block title %}Top AI Tools{% endblock %}
+
+{% block content %}
+<h1 class="text-center fw-bold mb-5 text-primary">🚀 Discover Top AI Tools</h1>
+
+<!-- Search Form
+<form method="get" class="mb-4">
+  <div class="input-group">
+    <input type="text" name="q" class="form-control" placeholder="Search tools..." value="{{ query|default_if_none:'' }}">
+    <button type="submit" class="btn btn-primary">Search</button>
+  </div>
+</form>
+
+{% if query %}
+  <p class="text-muted">Showing results for "<strong>{{ query }}</strong>"</p>
+{% endif %} -->
+
+<!-- Filter by Category -->
+<form method="get" class="mb-4">
+  <div class="row g-2">
+    <div class="col-md-6">
+      <input type="text" name="q" class="form-control" placeholder="Search tools..." value="{{ query|default_if_none:'' }}">
+    </div>
+    <div class="col-md-4">
+      <select name="category" class="form-select">
+        <option value="All">All Categories</option>
+        {% for cat in categories %}
+          <option value="{{ cat }}" {% if cat == selected_category %}selected{% endif %}>{{ cat }}</option>
+        {% endfor %}
+      </select>
+    </div>
+    <div class="col-md-2">
+      <button type="submit" class="btn btn-primary w-100">Filter</button>
+    </div>
+  </div>
+</form>
+
+
+
+
+
+<div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+  {% for tool in tools %}
+  <div class="col">
+    <div class="card h-100 border-0 shadow rounded-4 bg-light">
+
+      <!-- Logo -->
+      {% if tool.image_url %}
+        <img src="{{ tool.image_url }}" alt="{{ tool.name }} logo"
+             class="card-img-top p-4"
+             style="height: 140px; object-fit: contain;">
+      {% else %}
+        <img src="https://via.placeholder.com/160?text=No+Image" alt="Placeholder"
+             class="card-img-top p-4"
+             style="height: 140px; object-fit: contain;">
+      {% endif %}
+
+      <div class="card-body d-flex flex-column px-4 pt-2 pb-4">
+        <!-- Title -->
+        <h5 class="card-title text-dark-emphasis fw-semibold text-center mb-2">
+          {{ tool.name }}
+        </h5>
+
+        <!-- Description -->
+        <p class="card-text text-secondary small text-center mb-3">
+          {{ tool.description|truncatechars:120 }}
+        </p>
+
+        <!-- Tags & Category -->
+        <div class="text-center mb-3">
+          <span class="badge bg-primary-subtle text-primary-emphasis me-1">{{ tool.category }}</span>
+          {% if tool.is_free %}
+            <span class="badge bg-success-subtle text-success-emphasis">Free</span>
+          {% else %}
+            <span class="badge bg-danger-subtle text-danger-emphasis">Paid</span>
+          {% endif %}
+        </div>
+
+        <!-- Button -->
+        <a href="{% url 'tool_detail' tool.id %}" class="btn btn-outline-primary btn-sm mt-auto w-100">
+          View Details →
+        </a>
+      </div>
+    </div>
+  </div>
+  {% endfor %}
+</div>
+{% endblock %}
+
+
+
+
+
+<!-- 
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Tools</title>
+</head>
+<body>
+    <h1>AI Tools Directory</h1>
+    <ul>
+        {%for tool in tools %}
+        <li>
+            <strong><a href="{% url 'tool_detail' tool.id %}">{{ tool.name}}</a></strong> <br>
+            <a href="{{ tool.website}}" target="_blank">Visit</a><br> --> -->
+            <!-- {{ tool.description|truncatechars:100 }} <br>
+            <small>category: {{ tool.category }} | Free: {{ tool.is_free }}</small>
+            <small><strong>Tags:</strong>{{ tool.tags }}</small>
+        </li>
+        {% endfor %}
+    </ul>
+</body>
+</html> -->

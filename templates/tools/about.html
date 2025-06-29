@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+{% block title %}About{% endblock %}
+
+{% block content %}
+<div class="container py-5">
+  <div class="text-center mb-5">
+    <h1 class="fw-bold text-primary">About AI Tools & Tutorials Hub</h1>
+    <p class="lead text-muted">Empowering your productivity with the best AI tools and expert guides.</p>
+  </div>
+
+  <!-- Video Section -->
+  <div class="mb-5">
+    <div class="ratio ratio-16x9 rounded shadow">
+      <iframe src="https://www.youtube.com/embed/RLzC55ai0eo" title="AI Revolution" allowfullscreen></iframe>
+    </div>
+  </div>
+
+  <!-- Features Grid -->
+  <div class="row text-center g-4">
+    <div class="col-md-4">
+      <img src="https://source.unsplash.com/200x200/?ai,tools" class="rounded-circle mb-3 shadow-sm" alt="AI Tools">
+      <h5 class="text-primary">Top AI Tools</h5>
+      <p class="text-muted">Discover hand-picked, powerful AI tools across various domains like writing, art, coding, and more.</p>
+    </div>
+    <div class="col-md-4">
+      <img src="https://source.unsplash.com/200x200/?tutorial,learning" class="rounded-circle mb-3 shadow-sm" alt="Tutorials">
+      <h5 class="text-primary">Step-by-Step Tutorials</h5>
+      <p class="text-muted">Learn how to use each AI tool effectively with guided video tutorials and hands-on instructions.</p>
+    </div>
+    <div class="col-md-4">
+      <img src="https://source.unsplash.com/200x200/?future,technology" class="rounded-circle mb-3 shadow-sm" alt="Future Tech">
+      <h5 class="text-primary">Stay Ahead</h5>
+      <p class="text-muted">Stay updated with the latest AI innovations and become future-ready with our curated content.</p>
+    </div>
+  </div>
+
+  <!-- Final Message -->
+  <div class="mt-5 text-center">
+    <h4 class="fw-semibold text-success">Our Mission</h4>
+    <p class="text-muted">
+      To make artificial intelligence accessible, understandable, and useful for everyone. Whether you're a student, creator, or entrepreneur — we’re here to help you use AI wisely and creatively.
+    </p>
+  </div>
+</div>
+{% endblock %}

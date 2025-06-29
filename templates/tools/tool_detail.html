@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+{% block title %}{{ tool.name }} | AI Tool{% endblock %}
+
+{% block content %}
+<div class="card shadow p-5 bg-white rounded-4">
+  <h2 class="text-primary fw-bold mb-3">{{ tool.name }}</h2>
+
+  <p class="mb-2"><strong>🌐 Website:</strong> 
+    <a href="{{ tool.website }}" class="link-primary" target="_blank">{{ tool.website }}</a>
+  </p>
+
+  <p class="mb-3"><strong>📝 Description:</strong> {{ tool.description }}</p>
+  <p class="mb-2">
+    <strong>📂 Category:</strong> <span class="badge bg-primary-subtle text-primary-emphasis">{{ tool.category }}</span>
+  </p>
+  <p class="mb-2">
+    <strong>🏷️ Tags:</strong> {{ tool.tags }}
+  </p>
+  <p class="mb-2">
+    <strong>💰 Free to Use:</strong>
+    {% if tool.is_free %}
+      <span class="badge bg-success-subtle text-success-emphasis">Yes</span>
+    {% else %}
+      <span class="badge bg-danger-subtle text-danger-emphasis">No</span>
+    {% endif %}
+  </p>
+
+  <a href="{% url 'tool_list' %}" class="btn btn-secondary mt-4">← Back to All Tools</a>
+</div>
+{% endblock %}
+
+
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ tool.name }} - AI Tool Details</title>
+</head>
+<body>
+    <h1>{{ tool.name }}</h1>
+    <p><strong>Website:</strong><a href="{{ tool.website }}" target="_blank">{{ tool.website }}</a></p>
+    <p><strong>Description:</strong> {{ tool.description }}</p>
+    <p><strong>Category:</strong> {{ tool.category }}</p>
+    <p><strong>Free to Use:</strong> {{ tool.is_free }}</p>
+    <p><strong>Tags:</strong> {{ tool.tag }}</p>
+
+    <p><a href="{% url 'tool_list' %}"> Back to all tools</a></p>
+
+</body>
+</html> -->
