@@ -21,9 +21,16 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 import os
 
+# Secret key for Django security (good practice to use env var)
 SECRET_KEY = os.getenv("DJANGO_SECRET_KEY", "fallback-secret")
+
+# Debug mode - should be False in production
 DEBUG = os.getenv("DEBUG", "True") == "True"
-ALLOWED_HOSTS = os.getenv("ALLOWED_HOSTS", "127.0.0.1,localhost").split(",")
+
+# Allowed hosts - safe default and allows environment-based override
+ALLOWED_HOSTS = os.getenv("ALLOWED_HOSTS", "ai-tool-hub.onrender.com,127.0.0.1,localhost").split(",")
+
+
 
 
 
@@ -47,6 +54,8 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    "whitenoise.middleware.WhiteNoiseMiddleware",  # Add this line
+
 ]
 
 ROOT_URLCONF = 'config.urls'
@@ -125,4 +134,4 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
 
-STATIC_ROOT = BASE_DIR / "staticfiles"
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
